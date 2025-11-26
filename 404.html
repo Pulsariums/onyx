@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Onyx Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              onyx: {
+                black: '#000000',
+                dark: '#050505',
+                surface: '#121212',
+                surfaceLight: '#1E1E1E',
+                accent: '#3D8BFF', // Samsung Blue
+                text: '#FFFFFF',
+                textMuted: '#9CA3AF',
+                border: '#2A2A2A'
+              },
+              // Slider specific colors
+              slider: {
+                start: '#a78bfa', // Violet-400
+                end: '#4c1d95',   // Violet-900
+              }
+            },
+            borderRadius: {
+              'xl': '1rem',
+              '2xl': '1.5rem',
+              '3xl': '2rem', // One UI Squircle-ish
+            },
+            boxShadow: {
+              'glow': '0 0 15px 5px rgba(124, 58, 237, 0.4)', // Violet glow
+              'glow-lg': '0 0 25px 8px rgba(124, 58, 237, 0.5)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.3s ease-out',
+              'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        overscroll-behavior: none;
+      }
+      /* Custom Scrollbar for AMOLED look */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      .markdown-body pre {
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 1rem;
+        overflow-x: auto;
+      }
+      .markdown-body code {
+        font-family: 'Fira Code', monospace;
+        background-color: #262626;
+        padding: 0.2em 0.4em;
+        border-radius: 0.3em;
+      }
+      /* Math improvements */
+      .katex {
+        font-size: 1.1em;
+      }
+      .katex-display {
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0.5em 0;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "remark-math": "https://aistudiocdn.com/remark-math@^6.0.0",
+    "rehype-katex": "https://aistudiocdn.com/rehype-katex@^7.0.1",
+    "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/onyx/assets/index-DJiGOLG8.js"></script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
