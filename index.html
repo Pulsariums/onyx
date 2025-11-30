@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Onyx Chat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -59,6 +59,11 @@
       }
     </script>
     <style>
+      /* --- CORE LAYOUT FIX --- */
+      html, body, #root {
+        height: 100%;
+        overflow: hidden; /* Prevents unwanted body scrolling */
+      }
       body {
         background-color: #000000;
         color: #ffffff;
@@ -80,6 +85,7 @@
         background: #555;
       }
       .markdown-body pre {
+        /* Default pre style, overriden by CodeBlock component but kept for fallback */
         background-color: #1a1a1a;
         padding: 1rem;
         border-radius: 1rem;
@@ -87,10 +93,43 @@
       }
       .markdown-body code {
         font-family: 'Fira Code', monospace;
-        background-color: #262626;
+        background-color: rgba(255, 255, 255, 0.1);
         padding: 0.2em 0.4em;
         border-radius: 0.3em;
+        font-size: 0.85em;
       }
+      /* Prevent double background on block code */
+      .markdown-body pre code {
+        background-color: transparent;
+        padding: 0;
+        font-size: 1em;
+      }
+
+      /* --- TABLE STYLES (Fixing "Looks like plain text") --- */
+      .markdown-body table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+        font-size: 0.9em;
+      }
+      .markdown-body th {
+        background-color: #1E1E1E;
+        font-weight: bold;
+        text-align: left;
+        border: 1px solid #2A2A2A;
+        padding: 0.75rem;
+      }
+      .markdown-body td {
+        border: 1px solid #2A2A2A;
+        padding: 0.75rem;
+      }
+      .markdown-body tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+      .markdown-body tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
       /* Math improvements */
       .katex {
         font-size: 1.1em;
@@ -100,10 +139,14 @@
         overflow-y: hidden;
         padding: 0.5em 0;
       }
+      /* --- SCROLL JUMP FIX for KaTeX --- */
+      .message-bubble-container {
+        contain: layout style; /* Isolates rendering, preventing layout shifts */
+      }
     </style>
 
 <link rel="stylesheet" href="/index.css">
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.0",
@@ -116,11 +159,12 @@
     "rehype-katex": "https://aistudiocdn.com/rehype-katex@^7.0.1",
     "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "remark-gfm": "https://aistudiocdn.com/remark-gfm@^4.0.1"
   }
 }
 </script>
-  <script type="module" crossorigin src="/onyx/assets/index-BdLGrFq8.js"></script>
+  <script type="module" crossorigin src="/onyx/assets/index-BjqxtJGH.js"></script>
 </head>
   <body>
     <div id="root"></div>
